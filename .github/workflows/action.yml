@@ -1,0 +1,23 @@
+name: github-action
+env:
+apiKey: "546a14fb06d577568f48766e"
+apiSecret: "8107c6e656aba24e3c69def32871b3dd71d332f2873de62e29256459ed385108ae5b3e49"
+testID: "9366815"
+continuePipeline: "false"
+showTailLog: "false"
+on: push
+jobs:
+github-action:
+runs-on: ubuntu-latest
+steps:
+- name: Checkout
+uses: actions/checkout@v2.3.4
+- name: Run Blazemeter test
+uses: BlazeRunner-BZR/Github-Action@v8.1
+id: run-test
+with:
+apiKey: ${{env.apiKey}}
+apiSecret: ${{env.apiSecret}}
+testID: ${{env.testID}}
+continuePipeline: ${{env.continuePipeline}}
+showTailLog: ${{env.showTailLog}}
